@@ -7,8 +7,7 @@ var m; // monthly mortgage payment
 var p = 200000; // principal amount borrowed
 let i = 0.05; // monthly interest rate
 const years = 30; //monthly payments
-var name = "Lakendria";
-
+var name = 'Kendria';
 
 
 // 🏡 Task 1.5: Simple Math
@@ -39,24 +38,40 @@ Hint #2: you'll need to use the `math` object for parts of this calculation!
 
 When your math is correct, monthlyRate will equal 1073.64
 */
-var N = periods;
+var N = periods; // number of periods in monthly payments
 let n1 = Math.pow((1 + monthlyInterestRate), 360);
 let numerator = p * n1 * monthlyInterestRate;
 let denominator = n1 - 1;
 const monthlyRate = numerator / denominator;
 
 
-
-console.log(monthlyRate);
+console.log(monthlyRate.toFixed(2));
 
 // 🏡 Task 3: Function
 /* Create a function called `mortgageCalculator` that combines all of the steps from task 1 and 2 and returns a sentence "{Name}, your monthly rate is ${monthlyRate}"
 
 If your name is `Oscar` mortgageCalculator() should return "Oscar, your monthly rate is 1073.64"
 */
-function mortgageCalculator(params) {
 
+
+
+function mortgageCalculator() {
+    let P = 200000; // principal of amount borrowed
+    let I = 0.05; // interest   
+    const years = 30; // years of the loan
+    let periods = years * 12;
+    var name = "Kendria";
+
+    var N = periods;
+    let n1 = Math.pow((1 + monthlyInterestRate), 360);
+    let numerator = P * n1 * monthlyInterestRate;
+    let denominator = n1 - 1;
+    const monthlyRate = numerator / denominator;
+    return console.log(name + ", your monthly rate is " +
+        monthlyRate.toFixed(2));
 }
+mortgageCalculator();
+
 
 
 
@@ -67,6 +82,14 @@ function mortgageCalculator(params) {
 For example,
 mortgageCalculator(200000, 0.05, 30); <-- should return 1,073.64
 */
+
+function mortgageCalculator(P, I, N) {
+    P = 200000;
+    I = 0.05;
+    N = 30;
+    return monthlyRate
+}
+mortgageCalculator();
 
 
 
@@ -79,7 +102,27 @@ Then, add control flow within your function such that IF creditScore is above 74
 
 Hint: To drop an interest rate by 5% you can take monthlyRate and multiply it by 0.95. Similarly, to increase an interest rate by 5% you'd do monthlyRate * 1.05. 
 */
+function mortgageCalculator(P, I, N, creditScore) {
 
+
+    let periods = years * 12;
+    const name = "Kendria";
+    if (creditScore > 740) {
+        let newInterestRate = monthlyInterestRate * 0.95;
+        let monthlyRate = P * newInterestRate / 12 * (Math.pow(1 + newInterestRate / 12, periods)) / (Math.pow(1 + newInterestRate / 12, periods) - 1);
+
+        console.log(`${name}, your monthly rate is ` + `${monthlyRate.toFixed(2)}`);
+    } else if (creditScore < 660) {
+
+
+        let newInterestRate = monthlyInterestRate * 1.05;
+        let monthlyRate = P * newInterestRate / 12 * (Math.pow(1 + newInterestRate / 12, periods)) / (Math.pow(1 + newInterestRate / 12, periods) - 1);
+        console.log(`${name}, your monthly rate is ` + `${monthlyRate.toFixed(2)}`);
+    }
+    return
+}
+
+mortgageCalculator(200000, 0.05, 30, 600);
 
 
 
@@ -101,6 +144,22 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 
 
 
+function variableInterestRate(P, I, N) {
+
+
+    for (let i = 0.02; i <= 0.06; i = i + .005) {
+        const periods = N * 12;
+
+        let monthlyRate = P * (i / 12 * (Math.pow(1 + i / 12, periods)) / (Math.pow(1 + i / 12, periods) - 1));
+        console.log(`${name}, with an interest rate of ` +
+            (i.toFixed(3)) + `, your monthly rate is ` + `${monthlyRate.toFixed(2)}`);
+
+
+    }
+    return;
+
+}
+variableInterestRate(200000, 0.04, 30);
 
 // 🌟🌟🌟 STRETCH 🌟🌟🌟//
 
@@ -115,4 +174,4 @@ For example, variableInterestRate(200000, 0.04, 30) should console.log:
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
 
 
-/* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!) */
+/* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!)*/
