@@ -3,9 +3,9 @@
 // 🏡 Task 1: Variables
 /* Create variables for principal, interest rate, and years. Assign them the values 200000, 0.05, and 30 respectively. Create another value called name and give it the value of your own name.
  */
-var m; // monthly mortgage payment
-var p = 200000; // principal amount borrowed
-let i = 0.05; // monthly interest rate
+
+var P = 200000; // principal amount borrowed
+let I = 0.05; // monthly interest rate
 const years = 30; //monthly payments
 var name = 'Kendria';
 
@@ -16,7 +16,7 @@ var name = 'Kendria';
 (1) Create a variable called `monthlyInterestRate` and give it the value of interest rate divided by 12. 
 (2) Create another variable called `periods` and give it the value of years*12.
 */
-var monthlyInterestRate = i / 12;
+var monthlyInterestRate = I / 12;
 var periods = years * 12;
 
 
@@ -40,10 +40,9 @@ When your math is correct, monthlyRate will equal 1073.64
 */
 var N = periods; // number of periods in monthly payments
 let n1 = Math.pow((1 + monthlyInterestRate), 360);
-let numerator = p * n1 * monthlyInterestRate;
+let numerator = P * n1 * monthlyInterestRate;
 let denominator = n1 - 1;
 const monthlyRate = numerator / denominator;
-
 
 console.log(monthlyRate.toFixed(2));
 
@@ -172,6 +171,21 @@ variableInterestRate(200000, 0.04, 30);
 
 
 /* 🏡 Explore using `window.prompt()` to allow a user to input parameters in the browser */
+function MortgageApproval() {
+    var creditScore = window.prompt("What is your credit score?");
 
-
+    if (creditScore < 660) {
+        console.log("You are not approved for mortgage.");
+    } else if (creditScore > 740) {
+        console.log("You are pre-approved for mortgage.");
+    }
+    return;
+}
+MortgageApproval();
 /* 🏡  Refactor your `variableInterestRate()` function to accept an array of interest rates (make sure to copy and paste as to not lose your work!)*/
+
+function variableInterestRate() {
+    let I = [0.05, 17.5, 0.10, 0.8];
+
+    console.log(I);
+}
